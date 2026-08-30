@@ -1,0 +1,9 @@
+serviceAccount:
+  create: true
+  name: external-secrets
+  annotations:
+    # Convenção do ambiente: togglemaster-<env>-eso-irsa
+    eks.amazonaws.com/role-arn: "arn:aws:iam::927738510198:role/togglemaster-<env>-eso-irsa"
+
+installCRDs: true
+replicaCount: 1
