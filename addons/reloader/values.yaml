@@ -1,10 +1,11 @@
-serviceAccount:
-  create: true
-  name: reloader
-  annotations:
-    # Convenção do ambiente: togglemaster-<env>-reloader-irsa
-    eks.amazonaws.com/role-arn: "arn:aws:iam::927738510198:role/togglemaster-<env>-reloader-irsa"
-
 reloader:
-  watchGlobally: true
-  autoReloadAllDeployments: true
+  serviceAccount:
+    create: true
+    name: reloader
+    annotations:
+      # Convenção do ambiente: togglemaster-dev-reloader-irsa
+      eks.amazonaws.com/role-arn: "arn:aws:iam::927738510198:role/togglemaster-dev-reloader-irsa"
+  
+  reloader:
+    watchGlobally: true
+    autoReloadAllDeployments: true

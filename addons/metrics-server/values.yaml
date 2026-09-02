@@ -1,16 +1,17 @@
-replicas: 1
-
-serviceAccount:
-  create: true
-  name: metrics-server
-  annotations:
-    # Convenção do ambiente: togglemaster-<env>-metrics-server-irsa
-    eks.amazonaws.com/role-arn: "arn:aws:iam::927738510198:role/togglemaster-<env>-metrics-server-irsa"
-
-resources:
-  requests:
-    cpu: 25m
-    memory: 64Mi
-  limits:
-    cpu: 150m
-    memory: 256Mi
+metrics-server:
+  replicas: 1
+  
+  serviceAccount:
+    create: true
+    name: metrics-server
+    annotations:
+      # Convenção do ambiente: togglemaster-dev-metrics-server-irsa
+      eks.amazonaws.com/role-arn: "arn:aws:iam::927738510198:role/togglemaster-dev-metrics-server-irsa"
+  
+  resources:
+    requests:
+      cpu: 25m
+      memory: 64Mi
+    limits:
+      cpu: 150m
+      memory: 256Mi

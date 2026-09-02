@@ -1,36 +1,37 @@
-serviceAccount:
+keda:
+  serviceAccount:
+    operator:
+      create: true
+      name: keda-operator
+      annotations:
+        # Convenção do ambiente: togglemaster-dev-keda-sqs-irsa
+        eks.amazonaws.com/role-arn: "arn:aws:iam::927738510198:role/togglemaster-dev-keda-sqs-irsa"
+  
   operator:
-    create: true
-    name: keda-operator
-    annotations:
-      # Convenção do ambiente: togglemaster-<env>-keda-sqs-irsa
-      eks.amazonaws.com/role-arn: "arn:aws:iam::927738510198:role/togglemaster-<env>-keda-sqs-irsa"
-
-operator:
-  replicaCount: 1
-  resources:
-    requests:
-      cpu: 50m
-      memory: 64Mi
-    limits:
-      cpu: 200m
-      memory: 256Mi
-
-metricServer:
-  replicaCount: 1
-  resources:
-    requests:
-      cpu: 50m
-      memory: 64Mi
-    limits:
-      cpu: 200m
-      memory: 256Mi
-
-webhooks:
-  resources:
-    requests:
-      cpu: 25m
-      memory: 32Mi
-    limits:
-      cpu: 100m
-      memory: 128Mi
+    replicaCount: 1
+    resources:
+      requests:
+        cpu: 50m
+        memory: 64Mi
+      limits:
+        cpu: 200m
+        memory: 256Mi
+  
+  metricServer:
+    replicaCount: 1
+    resources:
+      requests:
+        cpu: 50m
+        memory: 64Mi
+      limits:
+        cpu: 200m
+        memory: 256Mi
+  
+  webhooks:
+    resources:
+      requests:
+        cpu: 25m
+        memory: 32Mi
+      limits:
+        cpu: 100m
+        memory: 128Mi
