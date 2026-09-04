@@ -27,22 +27,3 @@ Convenção de nomenclatura do laboratorio:
 
 O ArgoCD reconcilia somente os microsservicos declarados no repositorio GitOps. A promocao de
 imagens e executada pelo GitHub Actions, sem credenciais Git de escrita no cluster.
-
-## Instalacao local
-
-Com acesso administrativo ao EKS, execute na raiz deste repositorio:
-
-```bash
-export ADDONS_ENVIRONMENT=dev
-export AWS_ACCOUNT_ID=927738510198
-export AWS_REGION=us-east-1
-
-bash scripts/install-addons.sh
-```
-
-O script e idempotente, valida o contexto `kubectl`, cria os namespaces necessarios e instala
-Metrics Server, KEDA, NGINX Gateway Fabric, External Secrets e Reloader com versoes fixadas.
-Ele substitui o marcador `<env>` somente em arquivos temporarios, preservando os values
-versionados.
-
-teste
