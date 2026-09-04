@@ -45,3 +45,4 @@ Metrics Server, KEDA, NGINX Gateway Fabric, External Secrets e Reloader com vers
 Ele substitui o marcador `<env>` somente em arquivos temporarios, preservando os values
 versionados.
 
+teste
