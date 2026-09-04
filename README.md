@@ -44,3 +44,4 @@ O script e idempotente, valida o contexto `kubectl`, cria os namespaces necessar
 Metrics Server, KEDA, NGINX Gateway Fabric, External Secrets e Reloader com versoes fixadas.
 Ele substitui o marcador `<env>` somente em arquivos temporarios, preservando os values
 versionados.
+
