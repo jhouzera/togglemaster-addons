@@ -1,29 +1,20 @@
 # togglemaster-addons
 
-Repositorio dedicado aos addons de infraestrutura do cluster EKS da plataforma ToggleMaster.
+Repositório responsável pela camada estrutural de **Addons** do cluster Kubernetes (EKS).
 
-Proposito:
-- Centralizar a camada de plataforma e observabilidade basica do cluster.
-- Permitir versionamento e governanca separados dos manifests das aplicacoes.
+## 🎯 Propósito
+Separar a governança e o ciclo de vida das aplicações (Apps) dos componentes de sistema e plataforma.
+Contém ferramentas fundamentais para que as aplicações funcionem com resiliência, exposição pública e acesso à dados sensíveis.
 
-Responsabilidades:
-- Metrics Server.
-- KEDA.
-- NGINX Gateway Fabric.
-- External Secrets Operator.
-- Stakater Reloader.
+## 🛠️ Componentes Inclusos
+- **NGINX Gateway Fabric**: Provedor oficial da API Gateway moderna para balanceamento e exposição L7 (`togglemaster-gateway`).
+- **External Secrets Operator (ESO)**: Sincroniza segredos armazenados no AWS Secrets Manager em Secrets nativos do K8s, abstraindo credenciais dos *deployments*.
+- **Metrics Server**: Coletor de métricas vital para Auto-Scaling (HPA).
 
-Este repositorio concentra apenas a camada de plataforma instalada localmente via Helm.
-- Checklist operacional no ambiente dev: `docs/CHECKLIST-DEV.md`.
-- Runbook operacional no ambiente dev: `docs/RUNBOOK-DEV.md`.
+## 🚀 Como Utilizar
+Alterações nas versões dos Helm Charts ou ajustes nos valores dos addons devem ser comitados aqui.
+O repositório é espelhado no ArgoCD por um `ApplicationSet`, que cuida da instalação e gestão ciclo a ciclo no cluster.
 
-Dependencias externas:
-- Depende do cluster EKS provisionado pelo `togglemaster-iac` e de um contexto `kubectl` autenticado.
-
-Convenção de nomenclatura do laboratorio:
-- Roles IRSA: `togglemaster-dev-<addon>-irsa`
-- Prefixo ECR: `togglemaster-dev`
-- Secrets do AWS Secrets Manager: `togglemaster-dev/app/<secret-name>`
-
-O ArgoCD reconcilia somente os microsservicos declarados no repositorio GitOps. A promocao de
-imagens e executada pelo GitHub Actions, sem credenciais Git de escrita no cluster.
+### Exemplo Simples
+Para alterar os IP's permitidos a acessar a API Gateway (ex: range do Cloudflare):
+Modifique o bloco `loadBalancerSourceRanges` no arquivo de `values.yaml` do NGINX Gateway, e o ArgoCD aplicará a regra de *Security Group* instantaneamente.
