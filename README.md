@@ -24,3 +24,5 @@ O repositório é espelhado no ArgoCD por um `ApplicationSet`, que cuida da inst
 ### Exemplo Simples
 Para alterar os IP's permitidos a acessar a API Gateway (ex: range do Cloudflare):
 Modifique o bloco `loadBalancerSourceRanges` no arquivo de `values.yaml` do NGINX Gateway, e o ArgoCD aplicará a regra de *Security Group* instantaneamente.
+
+TESTE
