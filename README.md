@@ -26,3 +26,4 @@ Para alterar os IP's permitidos a acessar a API Gateway (ex: range do Cloudflare
 Modifique o bloco `loadBalancerSourceRanges` no arquivo de `values.yaml` do NGINX Gateway, e o ArgoCD aplicará a regra de *Security Group* instantaneamente.
 
 TESTE
+TESTE
